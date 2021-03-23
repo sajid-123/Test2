@@ -1,6 +1,8 @@
 
-package test2;
+
 import java.util.*;
+
+
 public class Occurence {
     
     public static void countNumberOfOccurences(){
