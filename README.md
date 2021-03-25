@@ -1,81 +1,159 @@
 
 
+
 import java.util.*;
-
-
-public class Occurence {
+public class ArrayListWithDuplicates {
     
-    public static void countNumberOfOccurences(){
-        
-        Map<Integer,Integer> map = new HashMap<>();
-       
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Please Enter the Integer Numbers");
-        
-        int number = sc.nextInt();
-        
-        while(number != 0){
-            
-            if(map.containsKey(number)){
-                
-                // map.get(key) will extract the value stored with respect to key
-                
-                
-                map.put(number, (map.get(number)+1));
-                
-            }else{
-                
-                map.put(number, 1);
-                
-            }
-          
-            
-            number = sc.nextInt();
-        }
+    public static void insertIntoSortedOrder(ArrayList<Integer> list, int number){
         
         
-     
-         // storing all values  in ArrayList
-       
-     
-      
-      ArrayList<Integer> values = new ArrayList<>();
-        
-      
-        for(Map.Entry<Integer,Integer> access : map.entrySet()){
-            
         
           
-          values.add(access.getValue());
-            
-            
-        }
-        
+   System.out.println("Elements of Array before insertion : "+list);
        
-      int max = Collections.max(values);
-      
-       for(Map.Entry<Integer,Integer> access : map.entrySet()){
-            
-        if(max == access.getValue())
-          
-          System.out.println("Maximum Occurences of  : "+access.getKey()+" : frequency -> "+max);
-            
+   // coversion of premitive to Wrapper class object caue ArrayList only accepts objects     
+   
+   
+   Integer num = number;
+   
+        for (int i = 0; i < list.size(); i++) {
+        // if the element you are looking at is smaller than number, 
+        // go to the next element
+        if (list.get(i) < number)
+        {
+            continue;
             
         }
-        
-      
-        
-        
-        
-        
-        
+        // if the element equals number, return, because we don't add duplicates
+        if (list.get(i) == number)
+        {
+            
+             list.add(i, num);
+            return;
+            
+        }
+            
+            
+        // otherwise, we have found the location to add number
+        list.add(i, num);
+        return;
     }
- public static void main(String[] args){
+    // we looked through all of the elements, and they were all
+    // smaller than number, so we add number to the end of the list
+    list.add(num);
+    
+    
+   
+    
      
-     
-      countNumberOfOccurences();  // calling method
-     
- }   
     
 }
+        
+        
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        
+        
+       // Creating Integer array instead of int array cause ArrayList only stores object and Integer is wrapper class object 
+        
+        Integer[] ar = {1,2,4,9,7,3,6,10,11};
+        
+        //converting array into Arraylist
+        
+        ArrayList<Integer> inputlist = new ArrayList<Integer>(Arrays.asList(ar));
+        
+        
+        Collections.sort(inputlist);
+        
+        
+        System.out.println("Sorted ArrayList is : "+ inputlist);
+        
+        
+        
+        String choice ="Yes";
+        
+        
+        do{
+            
+            if(choice.equalsIgnoreCase("Yes")){
+            
+             System.out.println("Please enter the number to store in ArrayList : ");
+        
+            
+             // here i'm pasring String into integer to avoid all kind of exception and errors cause we are taking diffrent ->
+             
+             //types of input from user 
+             
+            int number = Integer.parseInt(sc.nextLine());
+            
+            
+            insertIntoSortedOrder(inputlist,number);
+            
+            
+            
+            // changes after insertion will reflect in input array so we can print it here 
+            
+            System.out.println("Elements of Array after insertion : "+inputlist);
+            
+            }  
+            
+             System.out.println("Do you want to add more elements  in ArrayList [Yes/NO]: ");
+            
+            
+             choice = sc.nextLine();
+            
+            
+        }while( !choice.equalsIgnoreCase("No"));
+        
+        
+        
+        
+        
+    }    
+        
+        
+  
+    
+    
+}
+
+
+
+
+output on console :
+
+
+run:
+Sorted ArrayList is : [1, 2, 3, 4, 6, 7, 9, 10, 11]
+Please enter the number to store in ArrayList : 
+5
+Elements of Array before insertion : [1, 2, 3, 4, 6, 7, 9, 10, 11]
+Elements of Array after insertion : [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]
+Do you want to add more elements  in ArrayList [Yes/NO]: 
+yes
+Please enter the number to store in ArrayList : 
+5
+Elements of Array before insertion : [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]
+Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 9, 10, 11]
+Do you want to add more elements  in ArrayList [Yes/NO]: 
+yes
+Please enter the number to store in ArrayList : 
+8
+Elements of Array before insertion : [1, 2, 3, 4, 5, 5, 6, 7, 9, 10, 11]
+Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11]
+Do you want to add more elements  in ArrayList [Yes/NO]: 
+yes
+Please enter the number to store in ArrayList : 
+8
+Elements of Array before insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11]
+Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11]
+Do you want to add more elements  in ArrayList [Yes/NO]: 
+yes
+Please enter the number to store in ArrayList : 
+12
+Elements of Array before insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11]
+Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11, 12]
+Do you want to add more elements  in ArrayList [Yes/NO]: 
+no
