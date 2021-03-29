@@ -1,3 +1,4 @@
+[Check.txt](https://github.com/sajid-123/Test2/files/6224298/Check.txt)
 Value of in1 is  : 0
 Value of in2 is : 9
 while loop will run till in1 is less than in2  : 
