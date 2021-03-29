@@ -1,159 +1,43 @@
+Value of in1 is  : 0
+Value of in2 is : 9
+while loop will run till in1 is less than in2  : 
+in 1 iteration of loop Value of values[0] : 5
+in 1 iteration of loop Value of values[9] : 2
+in 1 iteration of loop Value of 5  is greater than 2
+So it enters inside else statement
+diffrence calculated  inside else statement in 1  iteration of  loop  is :  3
+After adding 1 Value of in1 becomes : 1
+After substracting 1 Value of in2 becomes : 8
+in 2 iteration of loop Value of values[1] : 16
+in 2 iteration of loop Value of values[8] : 8
+in 2 iteration of loop Value of 16  is greater than 8
+So it enters inside else statement
+diffrence calculated  inside else statement in 2  iteration of  loop  is :  8
+After adding 1 Value of in1 becomes : 2
+After substracting 1 Value of in2 becomes : 7
+in 3 iteration of loop Value of values[2] : 7
+in 3 iteration of loop Value of values[7] : 19
+in 3 iteration of loop Value of 7  is less than 19
+So it enters inside if statement
+diffrence calculated inside if statement in  3 iteration of  loop  is :  12
+After adding 1 Value of in1 becomes : 3
+After substracting 1 Value of in2 becomes : 6
+in 4 iteration of loop Value of values[3] : 15
+in 4 iteration of loop Value of values[6] : 12
+in 4 iteration of loop Value of 15  is greater than 12
+So it enters inside else statement
+diffrence calculated  inside else statement in 4  iteration of  loop  is :  3
+After adding 1 Value of in1 becomes : 4
+After substracting 1 Value of in2 becomes : 5
+in 5 iteration of loop Value of values[4] : 3
+in 5 iteration of loop Value of values[5] : 9
+in 5 iteration of loop Value of 3  is less than 9
+So it enters inside if statement
+diffrence calculated inside if statement in  5 iteration of  loop  is :  6
+After adding 1 Value of in1 becomes : 5
+After substracting 1 Value of in2 becomes : 4
+Value of in1 is  : 5
+Value of in2 is : 4
+while loop has stopped cause in1 greater than to in2   : 
 
 
-
-import java.util.*;
-public class ArrayListWithDuplicates {
-    
-    public static void insertIntoSortedOrder(ArrayList<Integer> list, int number){
-        
-        
-        
-          
-   System.out.println("Elements of Array before insertion : "+list);
-       
-   // coversion of premitive to Wrapper class object caue ArrayList only accepts objects     
-   
-   
-   Integer num = number;
-   
-        for (int i = 0; i < list.size(); i++) {
-        // if the element you are looking at is smaller than number, 
-        // go to the next element
-        if (list.get(i) < number)
-        {
-            continue;
-            
-        }
-        // if the element equals number, return, because we don't add duplicates
-        if (list.get(i) == number)
-        {
-            
-             list.add(i, num);
-            return;
-            
-        }
-            
-            
-        // otherwise, we have found the location to add number
-        list.add(i, num);
-        return;
-    }
-    // we looked through all of the elements, and they were all
-    // smaller than number, so we add number to the end of the list
-    list.add(num);
-    
-    
-   
-    
-     
-    
-}
-        
-        
-    public static void main(String[] args){
-        
-        Scanner sc = new Scanner(System.in);
-        
-        
-        
-       // Creating Integer array instead of int array cause ArrayList only stores object and Integer is wrapper class object 
-        
-        Integer[] ar = {1,2,4,9,7,3,6,10,11};
-        
-        //converting array into Arraylist
-        
-        ArrayList<Integer> inputlist = new ArrayList<Integer>(Arrays.asList(ar));
-        
-        
-        Collections.sort(inputlist);
-        
-        
-        System.out.println("Sorted ArrayList is : "+ inputlist);
-        
-        
-        
-        String choice ="Yes";
-        
-        
-        do{
-            
-            if(choice.equalsIgnoreCase("Yes")){
-            
-             System.out.println("Please enter the number to store in ArrayList : ");
-        
-            
-             // here i'm pasring String into integer to avoid all kind of exception and errors cause we are taking diffrent ->
-             
-             //types of input from user 
-             
-            int number = Integer.parseInt(sc.nextLine());
-            
-            
-            insertIntoSortedOrder(inputlist,number);
-            
-            
-            
-            // changes after insertion will reflect in input array so we can print it here 
-            
-            System.out.println("Elements of Array after insertion : "+inputlist);
-            
-            }  
-            
-             System.out.println("Do you want to add more elements  in ArrayList [Yes/NO]: ");
-            
-            
-             choice = sc.nextLine();
-            
-            
-        }while( !choice.equalsIgnoreCase("No"));
-        
-        
-        
-        
-        
-    }    
-        
-        
-  
-    
-    
-}
-
-
-
-
-output on console :
-
-
-run:
-Sorted ArrayList is : [1, 2, 3, 4, 6, 7, 9, 10, 11]
-Please enter the number to store in ArrayList : 
-5
-Elements of Array before insertion : [1, 2, 3, 4, 6, 7, 9, 10, 11]
-Elements of Array after insertion : [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]
-Do you want to add more elements  in ArrayList [Yes/NO]: 
-yes
-Please enter the number to store in ArrayList : 
-5
-Elements of Array before insertion : [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]
-Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 9, 10, 11]
-Do you want to add more elements  in ArrayList [Yes/NO]: 
-yes
-Please enter the number to store in ArrayList : 
-8
-Elements of Array before insertion : [1, 2, 3, 4, 5, 5, 6, 7, 9, 10, 11]
-Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11]
-Do you want to add more elements  in ArrayList [Yes/NO]: 
-yes
-Please enter the number to store in ArrayList : 
-8
-Elements of Array before insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11]
-Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11]
-Do you want to add more elements  in ArrayList [Yes/NO]: 
-yes
-Please enter the number to store in ArrayList : 
-12
-Elements of Array before insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11]
-Elements of Array after insertion : [1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11, 12]
-Do you want to add more elements  in ArrayList [Yes/NO]: 
-no
