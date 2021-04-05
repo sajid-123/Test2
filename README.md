@@ -1,242 +1,286 @@
-  
+Answer with Explanation :
+
+Program code :
 
 
-package Math;
+	for(int i=0; i<n;  i++){
+		    
+		    
+		    
+		    for(int j = i; j>0; j--){
+		        
+		        
+		        
+		        System.out.print("*");
+		        
+		    }
+		    
+		}
 
-import java.util.HashMap;
-import java.util.Scanner;
+
+Example 1 :
+
+**************Analysis of Bog O notation****************
+Suppose n is 5 for the outer loop
+1 Iteration of Outer loop 
+
+In the 1 Iteration of outer loop ,Inner loop is not running
+2 Iteration of Outer loop 
+In the 2 Iteration of outer loop ,Inner loop running 1times
+And print *
+3 Iteration of Outer loop 
+In the 3 Iteration of outer loop ,Inner loop running 2times
+And print *
+In the 3 Iteration of outer loop ,Inner loop running 3times
+And print *
+4 Iteration of Outer loop 
+In the 4 Iteration of outer loop ,Inner loop running 4times
+And print *
+In the 4 Iteration of outer loop ,Inner loop running 5times
+And print *
+In the 4 Iteration of outer loop ,Inner loop running 6times
+And print *
+5 Iteration of Outer loop 
+In the 5 Iteration of outer loop ,Inner loop running 7times
+And print *
+In the 5 Iteration of outer loop ,Inner loop running 8times
+And print *
+In the 5 Iteration of outer loop ,Inner loop running 9times
+And print *
+In the 5 Iteration of outer loop ,Inner loop running 10times
+And print *
 
 
-public class Cryptography {
-  
-    public static HashMap<Character,Integer> map=new HashMap<>(); 
-    
-     public static HashMap<Integer,Character> map1=new HashMap<>();
-    
-    
-    public static String encrypt(String message, int key){
-        
-        String upperCaseMsg = message.toUpperCase();
-        
-        String encryptedMsg = "";
-        
-		// this map will store integer value corresponding to Capital letttes
 
-       map=new HashMap<>(); //Substitution Algorithm is used for Encryption
+Result : here we can see the outer loops runs n times and inner loop runs 2*n times 
 
-        map.put('A',1);
-        map.put('B',2);
-        map.put('C',3);
-        map.put('D',4);
-        map.put('E',5);
-        map.put('F',6);
-        map.put('G',7);
-        map.put('H',8);
-        map.put('I',9);
-        map.put('J',10);
-        map.put('K',11);
-        map.put('L',12);
-        map.put('M',13);
-        map.put('N',14);
-        map.put('O',15);
-        map.put('P',16);
-        map.put('Q',17);
-        map.put('R',18);
-        map.put('S',19); 
-        map.put('T',20);
-        map.put('U',21);
-        map.put('V',22);
-        map.put('W',23);
-        map.put('X',24);
-        map.put('Y',25);
-        map.put('Z',26);
+So the Time Complexity is = n*(2*n)  =>O(n^2)
 
-        
-        
-        
-        
-     // this map will provide capital letters according to it's integer value    
-         
-       map1=new HashMap<>();
-    
-        map1.put(1,'A');
-        map1.put(2,'B');
-        map1.put(3,'C');
-        map1.put(4,'D');
-        map1.put(5,'E');
-        map1.put(6,'F');
-        map1.put(7,'G');
-        map1.put(8,'H');
-        map1.put(9,'I');
-        map1.put(10,'J');
-        map1.put(11,'K');
-        map1.put(12,'L');
-        map1.put(13,'M');
-        map1.put(14,'N');
-        map1.put(15,'O');
-        map1.put(16,'P');
-        map1.put(17,'Q');
-        map1.put(18,'R');
-        map1.put(19,'S'); 
-        map1.put(20,'T');
-        map1.put(21,'U');
-        map1.put(22,'V');
-        map1.put(23,'W');
-        map1.put(24,'X');
-        map1.put(25,'Y');
-        map1.put(26,'Z');
-        
-        
-        
-        
-        for(int i=0; i<upperCaseMsg.length(); i++){
-       
-            
-            char c = upperCaseMsg.charAt(i);
-        
-            if( c <= 'Z' && c >= 'A'){
-                
-                int val = map.get(c);
-                
-                int newValue = val + key;
-                
-                if(newValue > 26){
-                    
-                    
-                    newValue = newValue%26;
-                    
-                    encryptedMsg =  encryptedMsg + map1.get(newValue);
-                    
-                }else{
-                    
-                     encryptedMsg =  encryptedMsg + map1.get(newValue); 
-                   
-                }
-                
-                
-            }else{
-                
-                encryptedMsg =  encryptedMsg + c; 
-                
-                
-            }
-        
-        
-        }
-        
-        return encryptedMsg;
-    }
-    public static String decrypt(String message,int key){
-        
-        String decryptMsg = "";
-        
-        for(int i=0; i<message.length(); i++){
-       
-            
-            char c = message.charAt(i);
-        
-            if( c <= 'Z' && c >= 'A'){
-                
-                int val = map.get(c);
-                
-                int newValue = val - key;
-                
-                if(newValue < 0){
-                    
-                    
-                    newValue = newValue+26;
-                    
-                    decryptMsg  =  decryptMsg  + map1.get(newValue);
-                    
-                }else{
-                    
-                     decryptMsg  =  decryptMsg  + map1.get(newValue); 
-                   
-                }
-                
-                
-            }else{
-                
-                decryptMsg  =  decryptMsg  + c; 
-                
-                
-            }
-        
-        
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        return decryptMsg ;
-    }
-    public static void run(Scanner sc){
-        
-        
-        System.out.println("How many times you want to use the app :");
-        
-        int number = Integer.parseInt(sc.nextLine());
-        
-        for(int i=0; i<number; i++){
-            
-            System.out.print("your message :");
-            
-            String PlaneText = sc.nextLine();
-            
-            System.out.print("Encoding key :");
-            
-            int key =  Integer.parseInt(sc.nextLine());
-            
-            String encrypted = encrypt(PlaneText,key);
-            
-            
-            
-            System.out.println("The encrypted message is  :");
-            
-            System.out.println(encrypted);
-            
-            
-           System.out.println("The decrypted message is  :");
-              
-            String decrypted = decrypt(encrypted,key);
-            
-            
-             System.out.println(decrypted);
-            
-            
-        }
-        
-        
-        
-        
-        
-        
-    }
-  
-    public static void main(String[] args){
-        
-        Scanner input = new Scanner(System.in);
-        
-        run(input);
-        
-        
-        
-        
-        
-    }
-    
-    
-    
-    
-}
+here we eliminate contsant or the coefficient of n
 
 
 
 
+**************Analysis of Bog O notation****************
+Suppose n is 14 for the outer loop
+1 Iteration of Outer loop 
+In the 1 Iteration of outer loop ,Inner loop is not running
+2 Iteration of Outer loop 
+In the 2 Iteration of outer loop ,Inner loop running 1times
+And print *
+3 Iteration of Outer loop 
+In the 3 Iteration of outer loop ,Inner loop running 2times
+And print *
+In the 3 Iteration of outer loop ,Inner loop running 3times
+And print *
+4 Iteration of Outer loop 
+In the 4 Iteration of outer loop ,Inner loop running 4times
+And print *
+In the 4 Iteration of outer loop ,Inner loop running 5times
+And print *
+In the 4 Iteration of outer loop ,Inner loop running 6times
+And print *
+5 Iteration of Outer loop 
+In the 5 Iteration of outer loop ,Inner loop running 7times
+And print *
+In the 5 Iteration of outer loop ,Inner loop running 8times
+And print *
+In the 5 Iteration of outer loop ,Inner loop running 9times
+And print *
+In the 5 Iteration of outer loop ,Inner loop running 10times
+And print *
+6 Iteration of Outer loop 
+In the 6 Iteration of outer loop ,Inner loop running 11times
+And print *
+In the 6 Iteration of outer loop ,Inner loop running 12times
+And print *
+In the 6 Iteration of outer loop ,Inner loop running 13times
+And print *
+In the 6 Iteration of outer loop ,Inner loop running 14times
+And print *
+In the 6 Iteration of outer loop ,Inner loop running 15times
+And print *
+7 Iteration of Outer loop 
+In the 7 Iteration of outer loop ,Inner loop running 16times
+And print *
+In the 7 Iteration of outer loop ,Inner loop running 17times
+And print *
+In the 7 Iteration of outer loop ,Inner loop running 18times
+And print *
+In the 7 Iteration of outer loop ,Inner loop running 19times
+And print *
+In the 7 Iteration of outer loop ,Inner loop running 20times
+And print *
+In the 7 Iteration of outer loop ,Inner loop running 21times
+And print *
+8 Iteration of Outer loop 
+In the 8 Iteration of outer loop ,Inner loop running 22times
+And print *
+In the 8 Iteration of outer loop ,Inner loop running 23times
+And print *
+In the 8 Iteration of outer loop ,Inner loop running 24times
+And print *
+In the 8 Iteration of outer loop ,Inner loop running 25times
+And print *
+In the 8 Iteration of outer loop ,Inner loop running 26times
+And print *
+In the 8 Iteration of outer loop ,Inner loop running 27times
+And print *
+In the 8 Iteration of outer loop ,Inner loop running 28times
+And print *
+9 Iteration of Outer loop 
+In the 9 Iteration of outer loop ,Inner loop running 29times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 30times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 31times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 32times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 33times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 34times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 35times
+And print *
+In the 9 Iteration of outer loop ,Inner loop running 36times
+And print *
+10 Iteration of Outer loop 
+In the 10 Iteration of outer loop ,Inner loop running 37times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 38times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 39times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 40times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 41times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 42times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 43times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 44times
+And print *
+In the 10 Iteration of outer loop ,Inner loop running 45times
+And print *
+11 Iteration of Outer loop 
+In the 11 Iteration of outer loop ,Inner loop running 46times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 47times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 48times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 49times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 50times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 51times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 52times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 53times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 54times
+And print *
+In the 11 Iteration of outer loop ,Inner loop running 55times
+And print *
+12 Iteration of Outer loop 
+In the 12 Iteration of outer loop ,Inner loop running 56times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 57times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 58times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 59times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 60times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 61times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 62times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 63times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 64times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 65times
+And print *
+In the 12 Iteration of outer loop ,Inner loop running 66times
+And print *
+13 Iteration of Outer loop 
+In the 13 Iteration of outer loop ,Inner loop running 67times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 68times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 69times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 70times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 71times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 72times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 73times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 74times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 75times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 76times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 77times
+And print *
+In the 13 Iteration of outer loop ,Inner loop running 78times
+And print *
+14 Iteration of Outer loop 
+In the 14 Iteration of outer loop ,Inner loop running 79times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 80times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 81times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 82times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 83times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 84times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 85times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 86times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 87times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 88times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 89times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 90times
+And print *
+In the 14 Iteration of outer loop ,Inner loop running 91times
+And print *
 
-[Output.txt](https://github.com/sajid-123/Test2/files/6256705/Output.txt)
 
+
+
+Result : here we can see the outer loops runs n times and inner loop runs 6.5*n times 
+
+So the Time Complexity is = n*(6.5*n)  =>O(n^2)
+
+here we eliminate contsant or the coefficient of n
+
+
+
+Conclusion : As we see inner loop is running twice of the outer loop 
+
+		if our loop runs n times then inner loop runs tolal constant*n times 
+
+
+		So the Time Complexity is = n*(contant*n) =>  O(n^2) 
+
+		 constant (coefficient) here which we we don't consider
+
+					
+						
+						
