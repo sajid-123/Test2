@@ -238,34 +238,5 @@ public class Cryptography {
 
 
 
-//output on console :
+[Output.txt](https://github.com/sajid-123/Test2/files/6256705/Output.txt)
 
-
-run:
-How many times you want to use the app :
-4
-your message :i love java programming
-Encoding key :5
-The encrypted message is  :
-N QTAJ OFAF UWTLWFRRNSL
-The decrypted message is  :
-I LOVE JAVA PROGRAMMING
-your message :i will see you at the movie theater
-Encoding key :7
-The encrypted message is  :
-P DPSS ZLL FVB HA AOL TVCPL AOLHALY
-The decrypted message is  :
-I WILL SEE YOU AT THE MOVIE THEATER
-your message :my password if ertudfg
-Encoding key :8
-The encrypted message is  :
-UG XIAAEWZL QN MZBCLNO
-The decrypted message is  :
-MY PASSWORD IF ERTUDFG
-your message :i have to go home
-Encoding key :12
-The encrypted message is  :
-U TMHQ FA SA TAYQ
-The decrypted message is  :
-I HAVE TO GO HOME
-BUILD SUCCESSFUL (total time: 3 minutes 11 seconds)
