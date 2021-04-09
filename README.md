@@ -71,7 +71,7 @@ public class Exponential {
 
 
 
-
+click here to see output 
 [Output.txt](https://github.com/sajid-123/Test2/files/6283285/Output.txt)
 
 
