@@ -1,10 +1,7 @@
 
-
+package Count;
 
 import java.util.Scanner;
-
-
-
 abstract class Polygon {
     
     
