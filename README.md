@@ -1,312 +1,148 @@
 
-//Point.java
 
-public class Point {
- 
-    //Instance variable
 
-private int x;
-
-private int y;
-
-//Default constructor
-
-public Point()
-
-{
-//initializing instance variables 
-    
-    x = 0;
-    
-    y = 0;
+import java.util.Scanner;
+abstract class Polygon {
     
     
-}
-
-//Other Constructor
-
-public Point(int x, int y)
-
-{
-
-this.x = x;
-
-this.y = y;
-
-}
-
-//Copy Constructor
-
-public Point(Point p)
-
-{
-
-this(p.x, p.y);
-
-}
-
-//Accessor method
-
-public double getDistance(Point p)
-
-{
-
- double distance = Math.sqrt((this.x-p.x) * (this.x-p.x) + (this.y-p.y) * (this.y-p.y));   
+   abstract  double area();
     
-return distance;
-
-}
-
-public int getX()
-
-{
-
-return x;
-
-}
-
-public int getY()
-
-{
-
-return y;
-
-}
-
-//Mutator method
-
-public void set(int x, int y)
-
-{
-
-this.x = x;
-
-this.y = y;
-
-}
-
-//toString method
-
-public String toString()
-
-{
-
-return String.format("Given Point (" + x + "," + y + ")");
-
-}
-
+   abstract double perimeter(); 
+   
+   
 }
 
 
+public class Triangle extends Polygon {
 
+    
+    double sideA;
+    
+    double sideB;
+    
+    double sideC;
+    
+    
+    Triangle(){
+        
+        sideA = 0.0;
+        
+        sideB = 0.0;
+        
+        sideC = 0.0;
+        
+        
+        
+    }
 
+    public void setSideA(double sA) {
+        this.sideA = sA;
+    }
 
+    public void setSideB(double sB) {
+        this.sideB = sB;
+    }
 
-//Line.java
-
-
-
-
-
-
-package Count;
-
-public class Line {
-   //Instance variable
-
-private Point p1;
-
-private Point p2;
-
-//Default constructor
-
-public Line()
-
-{
-
-    p1 = null;
-
-    p2 = null;
+    public void setSideC(double sC) {
+        this.sideC = sC;
+    }
     
     
     
-}
-
-//Other constructor
-
-public Line(Point p1, Point p2)
-
-{
-
-this.p1 = new Point(p1);
-
-this.p2 = new Point(p2);
-
-}
-
-//Copy constructor
-
-public Line(Line aLine)
-
-{
-
-this(aLine.p1, aLine.p2);
-
-}
-
-//Accessor method
-
-//Compute the distance
-
-public double getDistance()
-
-{
-
-double distance = p1.getDistance(p2);
-
-return distance;
-
-}
-
-public Point getP1()
-
-{
-
-return p1;
-
-}
-
-public Point getP2()
-
-{
-
-return p2;
-
-}
-
-//Mutator method
-
-public void set(Point p1, Point p2)
-
-{
-
-this.p1 = p1;
-
-this.p2 = p2;
-
-}
-
-//toString Method
-
-public String toString()
-
-{
-
-return "Line ( Point("+ p1.getX() + ", " + p1.getY() + "), Point("+p2.getX() + 
-
-           "," + p2.getY() +"),   distance = "+String.format(" %.4f",getDistance())+")";
-
-}
-
-} 
-
-
-
-//  YunLiangNikosGo_A2.java
-
-
-
-
-
-
-import java.util.Random;
-
-public class YunLiangNikosGo_A2 {
     
-    //To generate random numbers
-
-private static int getInt()
-
-{
-
-int rand = (int)(Math.random() * 200) - 100;
-
-return rand;
-
-}
-
-//To generate two points
-
-private static void getTwoPoints(Point p1, Point p2)
-
-{
-
-// passing these two points for line information 
-
-Line aLine = new Line(p1, p2);
-
-System.out.println(aLine.toString());
-
-}
-
-private static Random rand = new Random();
-
-public static void main(String[] args)
-
-{
-
-for(int i = 1; i <= 5; i++)
-
-{
-if(i <=4 ){
     
-System.out.println("Set " + i);
-
-Point p1 = new Point(getInt(), getInt());
-
-System.out.println(p1.toString());
-
-Point p2 = new Point(getInt(), getInt());
-
-System.out.println(p2.toString());
-
-
-// passing two points for line information 
-
-getTwoPoints(p1,p2);
-
-System.out.println("----------------");
-
-
-}else{
     
-    System.out.println("Set " + i);
-Point p1 = new Point(getInt(), getInt());
+    @Override
+    double area() {
+        
+      
+       double s =   perimeter()/2;
+        
+      double Area =  Math.sqrt(s*(s-sideA)*(s-sideB)*(s-sideC));
+        
+        return Area;
+        
+    }
 
-
-System.out.println(p1.toString());
-
-Point p2 = new Point(getInt(), getInt());
-
-System.out.println(p2.toString());
-
-
-// passing two points for line information 
-
-getTwoPoints(p1,p2);
-
-
-
+    @Override
+    double perimeter() {
+        
+        double Perimeter = (sideA +sideB + sideC);
+        
+        return Perimeter;
+        
+    }
+   
+    
+    
+    public static void main(String[] args){
+        
+        
+        
+        Scanner sc = new Scanner(System.in);
+        
+        // creating object of Triangle class
+        
+        Triangle ob = new Triangle();
+        
+        
+        System.out.println("Please enter the three(3) sides of Triangle");
+        
+        double a = sc.nextDouble();
+        
+        double b = sc.nextDouble();
+        
+        
+        double c = sc.nextDouble();
+        
+        
+        
+        // validating input values 
+        
+        
+        if( (a+b) > c && (a+c) > b && (b+c) > a){
+            
+            
+            ob.setSideA(a);
+            
+            ob.setSideB(b);
+            
+            ob.setSideC(c);
+            
+            
+            double Perimeter_Of_Triangle = ob.perimeter();
+            
+            double Area_Of_Triangle = ob.area();
+            
+            
+            // this String.format("%.2f", Perimeter_Of_Triangle ) is used for precision  and will take only two decimal place of Perimeter_Of_Triangle 
+            
+            System.out.println("Perimeter of Triangle is : "+String.format("%.2f", Perimeter_Of_Triangle ));
+            
+            
+            // this String.format("%.2f", Area_Of_Triangle  ) is used for precision  and will take only two decimal place of Area_Of_Triangle  
+            
+            
+            System.out.println("Area of Triangle is : "+String.format("%.2f", Area_Of_Triangle ));
+            
+            
+        }else{
+            
+            System.out.println("INVALID!!!");
+            
+        }
+        
+        
+    
+        
+        
+    }
+    
+    
 
     
-}
-}
-
-}
+    
 }
 
 
 
-
-
-Click here to see output : [SampleOutput.txt](https://github.com/sajid-123/Test2/files/6329125/SampleOutput.txt)
